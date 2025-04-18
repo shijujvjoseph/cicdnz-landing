@@ -6,63 +6,95 @@
   <title>CICDNZ – Cloud Infra, Code & Design (NZ)</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const userPref = localStorage.getItem("theme");
-      if (userPref === "dark" || (!userPref && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("dark");
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      if (localStorage.getItem('theme') === 'dark') {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
       } else {
-        document.documentElement.classList.remove("dark");
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Apply saved theme on load
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
       }
     });
-    function toggleTheme() {
-      const root = document.documentElement;
-      if (root.classList.contains("dark")) {
-        root.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      } else {
-        root.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      }
-    }
   </script>
-  <style>
-    @keyframes fade-in {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in {
-      animation: fade-in 1s ease-out forwards;
-    }
-  </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans">
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200 font-inter">
   <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-10">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-gray-900 dark:text-white">CICDNZ</h1>
-      <div class="flex items-center space-x-4">
-        <nav class="space-x-4">
-          <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-500">About</a>
-          <a href="#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-500">Blog</a>
-          <a href="#project" class="text-gray-700 dark:text-gray-300 hover:text-blue-500">Project</a>
-          <a href="#stack" class="text-gray-700 dark:text-gray-300 hover:text-blue-500">Stack</a>
-          <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-500">Contact</a>
-        </nav>
-        <!-- Dark mode toggle -->
-        <button onclick="toggleTheme()" class="ml-4 p-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition" title="Toggle theme">
-          🌓
-        </button>
-      </div>
+      <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">CICDNZ</h1>
+      <nav class="space-x-4">
+        <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600">About</a>
+        <a href="#blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600">Blog</a>
+        <a href="#project" class="text-gray-700 dark:text-gray-300 hover:text-blue-600">Project</a>
+        <a href="#stack" class="text-gray-700 dark:text-gray-300 hover:text-blue-600">Stack</a>
+        <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600">Contact</a>
+        <button onclick="toggleDarkMode()" class="ml-4 p-2 bg-gray-100 dark:bg-gray-700 rounded">🌓</button>
+      </nav>
     </div>
   </header>
 
-  <!-- Full screen hero banner with aspect ratio lock -->
-  <section class="relative w-full overflow-hidden bg-gradient-to-b from-blue-100 to-white dark:from-gray-800 dark:to-gray-900">
-    <div class="relative pt-[42.5%] sm:pt-[35%] md:pt-[28%] lg:pt-[25%] xl:pt-[20%]">
-      <img src="assets/ghibli-hero-wide.png" alt="CICDNZ Hero" class="absolute top-0 left-0 w-full h-full object-cover object-top opacity-90">
-      <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 flex flex-col justify-center items-center text-center px-4">
-        <h2 class="text-4xl sm:text-5xl font-extrabold text-white drop-shadow-lg fade-in">Welcome to CICDNZ</h2>
-        <p class="mt-4 text-lg sm:text-xl text-white/90 fade-in">Designing secure, scalable, multicloud platforms the open-source way.</p>
-        <a href="https://blog.cicdnz.com" class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition fade-in">Visit Our Blog</a>
-      </div>
+  <section class="text-center py-20 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Welcome to CICDNZ</h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">A journey into secure, scalable, and open-source multicloud infrastructure from New Zealand.</p>
+      <a href="https://blog.cicdnz.com" class="inline-block px-6 py-3 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition">Visit Our Blog</a>
+    </div>
+    <div class="mt-10">
+      <img src="assets/ghibli-hero-wide.png" alt="CICDNZ Hero" class="mx-auto w-full max-w-2xl rounded shadow-lg">
     </div>
   </section>
+
+  <main class="max-w-5xl mx-auto p-6 space-y-24">
+    <section id="about">
+      <h2 class="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">👩‍💻 About Us</h2>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        We’re a cloud engineering couple sharing our journey building an open, Zero Trust multicloud platform using cutting-edge open-source technologies. This blog is where architecture meets experimentation.
+      </p>
+    </section>
+
+    <section id="blog">
+      <h2 class="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">📚 Latest from the Blog</h2>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        We publish regular posts on network design, security, eBPF, observability, and cloud-native infrastructure. Read it all at <a href="https://blog.cicdnz.com" class="text-blue-600 underline">blog.cicdnz.com</a>.
+      </p>
+    </section>
+
+    <section id="project">
+      <h2 class="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">🧱 Current Project</h2>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        We're building a secure multicloud platform using WireGuard, FRR, Suricata, Authelia, Cilium, Tetragon, Vault, and other zero-trust aligned tools — everything hosted and designed from scratch to go beyond what native cloud services offer.
+      </p>
+    </section>
+
+    <section id="stack">
+      <h2 class="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">🚀 Our Stack</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-gray-700 dark:text-gray-300">
+        <div>🌩️ Azure & AWS (multi-region)</div>
+        <div>🔐 WireGuard, FRR, NAT, BGP</div>
+        <div>🛡️ Suricata, eBPF, Tetragon</div>
+        <div>🔐 Authelia, Pomerium (Zero Trust)</div>
+        <div>📊 Grafana, Loki, Prometheus</div>
+        <div>📦 Vault, Terraform, GitOps</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">📬 Get In Touch</h2>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        We’d love to collaborate or connect! Reach us at <a href="mailto:hello@cicdnz.com" class="text-blue-600 underline">hello@cicdnz.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="bg-gray-100 dark:bg-gray-800 text-center p-6 text-sm text-gray-600 dark:text-gray-400 mt-20">
+    <p>&copy; 2025 CICDNZ. All rights reserved. Built with ❤️ from New Zealand. Opinions are our own.</p>
+  </footer>
+</body>
+</html>
