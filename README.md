@@ -34,3 +34,27 @@ Check out the deployed version here: [https://cicdnz.com](https://cicdnz.com)
 ## 📁 Folder Structure
 
 
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🧑‍💻 Authors
+
+- **[Shiju Joseph]** – [GitHub](https://github.com/shijuvjoseph)
+- **[Aswathi Shiju]** – [GitHub](https://github.com/aswathishiju)
+
+We share all content under our personal capacity and not on behalf of our employers.
+
+---
+
+## 📬 Contact
+
+Email us at [hello@cicdnz.com](mailto:hello@cicdnz.com)  
+Or follow our blog at [https://blog.cicdnz.com](https://blog.cicdnz.com)
+
+
+
